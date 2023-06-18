@@ -1,35 +1,65 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
-function App() {
-  const [count, setCount] = useState(0)
+import useMediaQuery from "./hooks/useMediaQuery";
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+import Anchor from "./components/Anchor";
+import Divider from "./components/Divider";
+import Footer from "./components/Footer";
+import Navbar from "./components/Nav";
+import Words from "./components/Words";
+import "./index.css";
 
-export default App
+import Landing from "./pages/Landing";
+
+const App = () => {
+	const [selectedPage, setSelectedPage] = useState("home");
+	const [isTopOfPage, setIsTopOfPage] = useState(true);
+	const isDesktop = useMediaQuery("(min-width: 1060px)");
+
+	useEffect(() => {
+		const handleScroll = () => {
+			if (window.scrollY === 0) {
+				setIsTopOfPage(true);
+				setSelectedPage("home");
+			}
+			if (window.scrollY !== 0) setIsTopOfPage(false);
+		};
+		window.addEventListener("scroll", handleScroll);
+		return () => window.removeEventListener("scroll", handleScroll);
+	}, []);
+
+	return (
+		<div className='app bg-deep-blue'>
+			<Navbar
+				isTopOfPage={isTopOfPage}
+				selectedPage={selectedPage}
+				setSelectedPage={setSelectedPage}
+			/>
+			<div className='w-5/6 mx-auto md:h-full'>
+				{isDesktop && (
+					<Anchor
+						selectedPage={selectedPage}
+						setSelectedPage={setSelectedPage}
+					/>
+				)}
+				<motion.div
+					margin='0 0 -200px 0'
+					amount='all'
+					transition={{ duration: 0.5 }}>
+					<Landing setSelectedPage={setSelectedPage} />
+				</motion.div>
+				<motion.div
+					margin='0 0 -200px 0'
+					amount='all'
+					transition={{ duration: 0.5 }}>
+					<Words />
+				</motion.div>
+			</div>
+			<Divider />
+			<Footer />
+		</div>
+	);
+};
+
+export default App;
