@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import PropTypes from "prop-types";
 import { useState } from "react";
 
 import { ProjectsArray } from "../components/ProjectArray";
@@ -18,6 +19,12 @@ const projectVariant = {
 };
 
 const Project = ({ title, url, description, img }) => {
+	Project.propTypes = {
+		title: PropTypes.string.isRequired,
+		url: PropTypes.string.isRequired,
+		description: PropTypes.string.isRequired,
+		img: PropTypes.string.isRequired,
+	};
 	const [isHovered, setIsHovered] = useState(false);
 
 	const handleMouseEnter = () => {
@@ -50,12 +57,12 @@ const Project = ({ title, url, description, img }) => {
 			onMouseLeave={handleMouseLeave}
 			onClick={() => openUrlInNewTab(url)}>
 			<div
-				className='absolute transition duration-500 bg-grey z-30 flex flex-col justify-center items-center text-center p-16 text-pink bg-white w-full h-full'
+				className='absolute z-30 flex flex-col items-center justify-center w-full h-full p-16 text-center transition duration-500 bg-white bg-grey text-pink'
 				style={overlayStyles}>
 				<p className='text-2xl'>{title}</p>
 				<a
 					href={url}
-					className='mt-7 text-pink underline'
+					className='underline mt-7 text-pink'
 					target='_blank'
 					rel='noopener noreferrer'>
 					{url}
@@ -71,7 +78,7 @@ const Projects = () => {
 	return (
 		<section id='projects' className='pt-48 pb-48'>
 			<motion.div
-				className='md:w-2/5 mx-auto text-center'
+				className='mx-auto text-center md:w-2/5'
 				initial='hidden'
 				animate='visible'
 				transition={{ opacity: { duration: 0.5 }, y: { duration: 0.5 } }}
@@ -80,13 +87,13 @@ const Projects = () => {
 					visible: { opacity: 1, y: 0 },
 				}}>
 				<div>
-					<p className='font-semibold text-4xl'>
+					<p className='text-4xl font-semibold'>
 						PRO<span className='text-pink'>JECTS</span>
 					</p>
 				</div>
 				<p className='mt-10 mb-10'>
-					Below is an ever expanding library of applications and projects I've
-					worked on and created
+					Below is an ever expanding library of applications and projects
+					I&apos;ve worked on and created
 				</p>
 			</motion.div>
 
@@ -104,6 +111,7 @@ const Projects = () => {
 						<div
 							key={project.id}
 							className='scroll-to-project max-h-[400px] max-w-[400px] h-[400px] w-[400px]'
+							// eslint-disable-next-line no-undef
 							onClick={() => openUrlInNewTab(project.url)}>
 							<Project
 								title={project.title}

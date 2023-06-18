@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { wrap } from "popmotion";
 import { useState } from "react";
-import SkillsArray from "./SkillsData.Jsx";
+import SkillsData from "./SkillsData";
 
 const SkillsCycle = () => {
 	const variants = {
@@ -19,7 +19,7 @@ const SkillsCycle = () => {
 	};
 
 	const [[page, direction], setPage] = useState([0, 0]);
-	const skillsArrayIndex = wrap(0, SkillsArray.length, page);
+	const skillsDataIndex = wrap(0, SkillsData.length, page);
 
 	const paginate = (newDirection) => {
 		setPage([page + newDirection, newDirection]);
@@ -46,12 +46,12 @@ const SkillsCycle = () => {
 						alignItems: "center",
 						flexDirection: "column",
 					}}>
-					<h1 className='text-4xl font-semibold text-pink mb-5'>
-						{SkillsArray[skillsArrayIndex].name}
+					<h1 className='mb-5 text-4xl font-semibold text-pink'>
+						{SkillsData[skillsDataIndex].name}
 					</h1>
 					<motion.img
 						key={page}
-						src={SkillsArray[skillsArrayIndex].logo}
+						src={SkillsData[skillsDataIndex].logo}
 						custom={direction}
 						variants={variants}
 						initial='enter'
@@ -72,17 +72,17 @@ const SkillsCycle = () => {
 								paginate(-1);
 							}
 						}}
-						className='bg-white flex center justify-center rounded-3xl'
+						className='flex justify-center bg-white center rounded-3xl'
 					/>
 					<div className='buttons-container'>
 						<button
 							onClick={handlePrevious}
-							className='bg-pink text-primary-blue font-semibold rounded-sm py-3 px-7 mt-5 hover:bg-deep-blue hover:text-white transition duration-500 m-4'>
+							className='py-3 m-4 mt-5 font-semibold transition duration-500 rounded-sm bg-pink text-primary-blue px-7 hover:bg-deep-blue hover:text-white'>
 							Previous Skill
 						</button>
 						<button
 							onClick={handleNext}
-							className='bg-pink text-primary-blue font-semibold rounded-sm py-3 px-7 mt-5 hover:bg-deep-blue hover:text-white transition duration-500'>
+							className='py-3 mt-5 font-semibold transition duration-500 rounded-sm bg-pink text-primary-blue px-7 hover:bg-deep-blue hover:text-white'>
 							Next Skill
 						</button>
 					</div>

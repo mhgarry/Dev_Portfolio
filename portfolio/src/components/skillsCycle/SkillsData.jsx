@@ -1,6 +1,6 @@
 import Logos from "./Logo";
 
-const SkillsArray = [
+const SkillsData = [
 	{ name: "API", logo: Logos.ApiLogo },
 	{ name: "Bootstrap", logo: Logos.BootstrapLogo },
 	{ name: "CSS", logo: Logos.CssLogo },
@@ -33,4 +33,4 @@ const SkillsArray = [
 	{ name: "Sequelize", logo: Logos.SequelizeLogo },
 ];
 
-export default SkillsArray;
+export default SkillsData;

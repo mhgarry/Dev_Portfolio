@@ -42,7 +42,7 @@ const Contact = () => {
 				className='flex justify-end w-full'>
 				<div>
 					<p className='text-4xl font-semibold'>
-						<span className='text-pink'>CONTACT ME</span> LET'S COLLABORATE
+						<span className='text-pink'>CONTACT ME</span> LET&apos;S COLLABORATE
 					</p>
 				</div>
 			</motion.div>
@@ -118,7 +118,7 @@ const Contact = () => {
 						<button
 							className='py-3 mt-5 font-semibold transition duration-500 rounded-sm bg-pink text-primary-blue px-7 hover:bg-deep-blue hover:text-white'
 							type='submit'>
-							LET'S TALK
+							LET&apos;S TALK
 						</button>
 						<MediaIcons />
 					</form>

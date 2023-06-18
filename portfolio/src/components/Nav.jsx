@@ -1,8 +1,14 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import useMediaQuery from "../hooks/useMediaQuery.jsx";
 
 const Link = ({ page, selectedPage, setSelectedPage }) => {
+	Link.propTypes = {
+		page: PropTypes.string.isRequired,
+		selectedPage: PropTypes.string.isRequired,
+		setSelectedPage: PropTypes.func.isRequired,
+	};
 	const lowerCasePage = page.toLowerCase();
 	return (
 		<AnchorLink
@@ -17,6 +23,11 @@ const Link = ({ page, selectedPage, setSelectedPage }) => {
 };
 
 const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
+	Navbar.propTypes = {
+		isTopOfPage: PropTypes.bool.isRequired,
+		selectedPage: PropTypes.string.isRequired,
+		setSelectedPage: PropTypes.func.isRequired,
+	};
 	const [isMenuToggle, setIsMenuToggle] = useState(false);
 	const isDesktop = useMediaQuery("(min-width: 768px)");
 	const navBackground = isTopOfPage ? "transparent" : "bg-turquoise";

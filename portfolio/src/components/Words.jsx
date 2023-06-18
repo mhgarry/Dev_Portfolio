@@ -1,9 +1,14 @@
+/* eslint-disable react/no-unknown-property */
 import { Text, TrackballControls } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
+import PropTypes from "prop-types";
 import { useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 
 function Word({ children, ...props }) {
+	Word.propTypes = {
+		children: PropTypes.string.isRequired,
+	};
 	const color = new THREE.Color();
 	const fontProps = {
 		font: "VT323", // Font family,
@@ -42,6 +47,7 @@ function Word({ children, ...props }) {
 			onClick={() => console.log("clicked")}
 			{...props}
 			{...fontProps}
+			// eslint-disable-next-line react/no-children-prop
 			children={children}
 		/>
 	);
@@ -70,6 +76,7 @@ function Cloud({ count = 4, radius = 20, wordsArray }) {
 	}, [count, radius, wordsArray]);
 
 	return words.map(([pos, word], index) => (
+		// eslint-disable-next-line react/no-children-prop
 		<Word key={index} position={pos} children={word} />
 	));
 }
@@ -112,6 +119,7 @@ export default function App() {
 		"solutions",
 		"e-commerce",
 	];
+	// eslint-disable-next-line no-unused-vars
 	const [active, setActive] = useState(null);
 	return (
 		<Canvas

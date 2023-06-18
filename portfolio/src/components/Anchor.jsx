@@ -1,6 +1,11 @@
+import PropTypes from "prop-types";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 
 const Anchor = ({ selectedPage, setSelectedPage }) => {
+	Anchor.propTypes = {
+		selectedPage: PropTypes.string.isRequired,
+		setSelectedPage: PropTypes.func.isRequired,
+	};
 	const selectedStyles = `relative bg-deep-blue before:absolute before:w-6 before:h-6 before:rounded-full before:border-2 before:border-pink before:left-[-50%] before:top-[-50%]`;
 
 	return (
