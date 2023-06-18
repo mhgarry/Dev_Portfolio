@@ -10,8 +10,8 @@ import Navbar from "./components/Nav";
 import Words from "./components/Words";
 import "./index.css";
 
+import About from "./pages/About";
 import Landing from "./pages/Landing";
-
 const App = () => {
 	const [selectedPage, setSelectedPage] = useState("home");
 	const [isTopOfPage, setIsTopOfPage] = useState(true);
@@ -57,6 +57,41 @@ const App = () => {
 				</motion.div>
 			</div>
 			<Divider />
+			<div className='w-5/6 mx-auto md:h-full'>
+				<motion.div
+					margin='0 0 -200px 0'
+					amount='all'
+					transition={{ duration: 0.5 }}>
+					<About selectedPage={setSelectedPage} />
+				</motion.div>
+			</div>
+			<Divider />
+			<div className='w-5/6 mx-auto md:h-full'>
+				<motion.div
+					margin='0 0 -200px 0'
+					amount='all'
+					transition={{ duration: 0.5 }}>
+					<Projects selectedPage={setSelectedPage} />
+				</motion.div>
+			</div>
+			<Divider />
+			<div className='w-5/6 mx-auto md:h-full'>
+				<motion.div
+					margin='0 0 -200px 0'
+					amount='all'
+					transition={{ duration: 0.5 }}>
+					<Contact selectedPage={setSelectedPage} />
+				</motion.div>
+			</div>
+			<Divider />
+			<div className='w-5/6 mx-auto md:h-full'>
+				<motion.div
+					margin='0 0 -200px 0'
+					amount='all'
+					transition={{ duration: 0.5 }}>
+					<Resume selectedPage={setSelectedPage} />
+				</motion.div>
+			</div>
 			<Footer />
 		</div>
 	);
