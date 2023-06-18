@@ -11,7 +11,11 @@ import Words from "./components/Words";
 import "./index.css";
 
 import About from "./pages/About";
+import Contact from "./pages/Contact";
 import Landing from "./pages/Landing";
+import Projects from "./pages/Projects";
+import Resume from "./pages/Resume";
+
 const App = () => {
 	const [selectedPage, setSelectedPage] = useState("home");
 	const [isTopOfPage, setIsTopOfPage] = useState(true);
